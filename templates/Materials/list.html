@@ -1,0 +1,75 @@
+{% extends "./base.html" %}
+{% load materializecss %}
+{% block title %}Liste des matériels{% endblock %}
+{% block content %}
+ <h4 class="card-panel pink darken-2 white-text text-darken-2"><i class="large material-icons">school</i> Gestion de Matériel pédagogique</h4>
+    <div class="row">
+      <div class="col s12 card-panel pink darken-2 white-text text-darken-2"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
+      <div class="col s6 offset-s6 ">
+
+            <a type="submit" href="{% url "GestionMat:garrenti_search" %}" value="your_value" class="btn-small pink darken-2 white-text text-darken-2"><i class="material-icons">search</i> chercher les videoprojecteurs qui ne sont plus sous garentie</a>
+     </div>
+     <div class="col s6 offset-s6 card-panel pink darken-2 white-text text-darken-2"><span class="flow-text"> <form action="{% url "GestionMat:mat_search" %}" method="get">
+ {{ form |materializecss:'black-text' }}
+ <input type="submit" value="Search">
+ </form></span></div>
+
+    </div>
+ {% for material in materials %}
+
+     <div class="col s12 m7">
+<div class="row">
+    <div class="card horizontal col s12">
+      <div class="card-image col s4">
+          <div class="row">
+           <div class="col s5">
+                 <a  href="{{ material.get_absolute_url }}" >
+                     <img src="/static/images/briefing.png" alt="" class="circle responsive-img"> </a>
+           </div>
+          <div class="col s3" >
+          <h6 class="header">Numero de serie :<br><br> <a class="responsive-img waves-effect waves-light btn-small  pink darken-2 white-text text-darken-2" href="{{ material.get_absolute_url }}">
+        {{ material.numero_serie }}
+          </a></h6> </div>
+      </div>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+       <div class="row">
+            <div class="col s6">No de série :</div>
+            <div class="col s6">{{ material.numero_serie }}</div>
+            <div class="col s6">Date achat :</div>
+            <div class="col s6">{{ material.date_achat }}</div>
+            <div class="col s6">Durée de garantie :</div>
+            <div class="col s6">{{ material.garantie_duree }} années </div>
+            <div class="col s6">Lieu d'achat (entreprise) :</div>
+            <div class="col s6">{{ material.achat_lieu }} </div>
+            <div class="col s6">Prix d'achat :</div>
+            <div class="col s6">{{ material.achat_prix }} DH </div>
+            <div class="col s6">Marque :</div>
+            <div class="col s6">{{ material.marque }} </div>
+            <div class="col s6">Date de dernière maintenance :</div>
+            <div class="col s6">{{ material.date_derniere_maintenance }} </div>
+            <div class="col s6">Contrat de maintenance :</div>
+            <div class="col s6">{{ material.contrat_maintenance }} </div>
+            <div class="col s6"> si contract de maintenance durée (en mois) :</div>
+            <div class="col s6">{{ material.duree }} </div>
+            <div class="col s6"> editeur :</div>
+            <div class="col s6">{{ material.editeur.username }} </div>
+       </div>
+
+        </div>
+
+
+
+            <form action="{{ material.get_delete_url }}" method="post">
+                 <a href="{{ material.get_update_url }}" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">update</i></a>
+                 {% csrf_token %}
+    <button type="submit" name="your_name" value="your_value" class="btn-floating btn-large waves-effect waves-light red" onclick="return confirm('est ce que tu es sure vous voulez supprimer ?');"><i class="material-icons">delete</i></button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+ {% endfor %}
+{% include "./pagination.html" with page=materials %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "./base.html" %}
+{% load materializecss %}
+
+{% block title %}Ajouter un nouveau material{% endblock %}
+{% block content %}
+ <h1>Ajouter un material</h1>
+ <p>Ajouter un nouveau material</p>
+ <form method="post">
+<div class="row">
+ {{ material_form | materializecss:"col s12" }}
+ </div>
+ {% csrf_token %}
+ <p><input type="submit" value="ajouter un material"></p>
+ </form>
+
+
+{% endblock %}

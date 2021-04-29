@@ -1,0 +1,91 @@
+{% extends "./base.html" %}
+{% block title %}{{ material.numero_serie }}{% endblock %}
+{% block content %}
+    <h4 class="card-panel pink darken-2 white-text text-darken-2"><i class="large material-icons">school</i> {{ material.numero_serie }}</h4>
+    <div class="row">
+      <div class="col s12 card-panel pink darken-2 white-text text-darken-2"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
+      <div class="col s6 offset-s6 card-panel pink darken-2 white-text text-darken-2"><span class="flow-text">6-columns (offset-by-6)</span></div>
+    </div>
+
+ <p class="date">
+
+     <table class="striped">
+        <thead>
+          <tr>
+              <th>key</th>
+              <th>valeur</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>No de série :</td>
+            <td>{{ material.numero_serie }}</td>
+          </tr>
+          <tr>
+            <td>Date achat :</td>
+            <td>{{ material.date_achat }}</td>
+
+          </tr>
+          <tr>
+            <td>Durée de garantie :</td>
+            <td>{{ material.garantie_duree }} années</td>
+
+          </tr>
+
+         <tr>
+            <td>Lieu d'achat (entreprise) :</td>
+            <td>{{ material.achat_lieu }}</td>
+
+          </tr>
+         <tr>
+            <td>Prix d'achat :</td>
+            <td>{{ material.achat_prix }} DH</td>
+
+          </tr>
+         <tr>
+            <td>Marque :</td>
+            <td>{{ material.marque }}</td>
+
+          </tr>
+         <tr>
+            <td>Date de dernière maintenance :</td>
+            <td>{{ material.date_derniere_maintenance }} </td>
+
+          </tr>
+         <tr>
+            <td>Contrat de maintenance :</td>
+            <td>{{ material.contrat_maintenance }} </td>
+
+          </tr>
+
+            <tr>
+            <td>  si contract de maintenance durée (en mois) :</td>
+            <td>{{ material.duree }} </td>
+
+          </tr>
+
+            <tr>
+            <td>editeur :</td>
+            <td>{{ material.editeur.username }} </td>
+
+          </tr>
+
+
+
+
+
+        </tbody>
+      </table>
+
+     <a href="{{ material.get_update_url }}" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">update</i></a>
+              <a href="{{ material.get_delete_url }}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+ <a href="{{ material.get_delete_url }}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+
+            <form action="{{ material.get_delete_url }}" method="post">
+                 {% csrf_token %}
+    <button type="submit" name="your_name" value="your_value" class="btn-floating btn-large waves-effect waves-light red" onclick="return confirm('est ce que tu es sure vous voulez supprimer ?');"><i class="material-icons">delete</i></button>
+</form>
+ </p>
+ {{ material.achat_lieu|linebreaks }}
+{% endblock %}

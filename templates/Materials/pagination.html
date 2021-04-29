@@ -1,0 +1,24 @@
+<div class="pagination">
+ <span class="step-links">
+ {% if page.has_previous %}
+     <a href="?page={{ page.previous_page_number  }}"> <span class="active"><i class="material-icons">chevron_left</i></span>  </a>
+ {% endif %}
+
+ <span class="current">
+ {% for p in page.paginator %}
+
+     {% if p.number == page.number %}
+         <li class="active"> <a href="?page={{ page.number}}"> {{ page.number }} </a> </li>
+     {% endif %}
+     {% if p.number != page.number %}
+         <li class="waves-effect"> <a href="?page={{ p.number }}"> {{ p.number}} </a> </li>
+     {% endif %}
+
+ {% endfor %}
+  </span>
+
+ {% if page.has_next %}
+     <a href="?page={{ page.next_page_number }}">    <span class="active"><i class="material-icons">chevron_right</i></span> </a>
+ {% endif %}
+ </span>
+</div>

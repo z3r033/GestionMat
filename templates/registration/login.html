@@ -1,0 +1,37 @@
+{% extends "../Materials/base.html" %}
+{% load materializecss %}
+{% block title %}Connexion{% endblock %}
+{% block content %}
+ <h1>Connexion</h1>
+ {% if form.errors %}
+ <p>
+ Votre nom d'utilisateur et votre mot de passe ne correspondent pas.
+ Veuillez réessayer.
+  <div class="card-panel s6 pink darken-1 white-text">
+Si votre premiere fois d'utiliser cette application , le default identifiant c'est
+    <span class="red white-text">admin admin</span></div>
+
+ {% else %}
+      <div class="card-panel s6 pink darken-1 white-text">
+Si votre premiere fois d'utiliser cette application , le default identifiant c'est
+    <span class="red white-text">admin admin</span></div>
+
+
+
+    <!--<a href="{% url "enregistrer" %}">register here</a></p> -->
+ {% endif %}
+ <div class="login-form">
+ <br> <br>
+ <form action="{% url 'login' %}" method="post">
+
+<div class="row">
+     {{ form.username|materializecss:'white-text col s12 , icon=person'}}
+     {{ form.password|materializecss:'white-text col s12  , icon=https' }}
+</div>
+ {% csrf_token %}
+ <input type="hidden" name="next" value="{{ next }}" />
+ <p><button type="submit" class="btn" >connexion </button></p>
+ </form>
+ <!-- <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p> -->
+ </div>
+{% endblock %}

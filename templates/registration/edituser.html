@@ -1,0 +1,11 @@
+{% extends "../Materials/base.html" %}
+{% block title %}Modifier vos informations{% endblock %}
+{% block content %}
+ <h1>Modifier vos infos</h1>
+ <p>si vous voulez changer vos informations personnels remplire les champs suivant</p>
+ <form method="post">
+ {{ user_form.as_p }}
+ {% csrf_token %}
+ <p><input class="btn-flat red" onclick="M.toast({html: '...... ',displayLeng: 4000})" type="submit" value="sauvegard"></p>
+ </form>
+{% endblock %}

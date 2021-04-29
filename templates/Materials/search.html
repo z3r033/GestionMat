@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+{% block title %}Recherche{% endblock %}
+{% block content %}
+ {% if query %}
+ <h1>fiche de materiels qui contient "{{ query }}"</h1>
+ <h3>
+ {% with results.count as total_results %}
+ resultats {{ total_results }} trouvés {{ total_results }}
+ {% endwith %}
+ </h3>
+ {% for post in results %}
+ <h4><a href="{{ post.get_absolute_url }}">{{ post.achat_lieu }}</a></h4>
+ {{ post.body|truncatewords_html:5 }}
+ {% empty %}
+ <p>pas de résultat</p>
+ {% endfor %}
+ <p><a href="{% url "GestionMat:mat_search" %}">chercher une autre fois</a></p>
+ {% else %}
+ <h1>recherche de materials</h1>
+ <form method="get">
+ {{ form.as_p }}
+ <input type="submit" value="chercher">
+ </form>
+ {% endif %}
+{% endblock %}

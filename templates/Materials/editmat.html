@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+
+{% load materializecss %}
+{% block title %}update un nouveau material{% endblock %}
+{% block content %}
+ <h1>update un material</h1>
+ <p>update material</p>
+ <form method="post">
+   {{ mat.date_derniere_maintenance.year  }}
+     {{ materia.as_p}}
+     <script>
+$("#id_date_achat").each(function() {
+  // Initialize materialize data picker
+  $('#id_date_achat').datepicker('setDate', {{ materia.date_achat }}
+
+  //$('select').formSelect();
+
+
+});
+</script>
+ {% csrf_token %}
+ <p><input type="submit" value="updates material"></p>
+ </form>
+
+{% endblock %}

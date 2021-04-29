@@ -1,0 +1,8 @@
+{% extends "../Materials/base.html" %}
+{% block title %}enregistrement{% endblock %}
+{% block content %}
+ <h1>Bonjour {{ new_user.first_name }} {{ new_user.username }}</h1>
+ <p>
+Votre compte à été créé avec succès. vous pouvez connecter ici <a
+href="{% url "login" %}"> identifier</a>.</p>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends "./base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+ <h1>Gestion matériel pédagogique</h1>
+ <p> </p>
+{% if user.is_authenticated %}
+    <p>Bonjour  {{ user.get_username }} !! </p>
+    <div class="row">
+      <div class="card-panel col s6 pink darken-1 white-text ">
+      <div class="row">
+           <div class="col s2">
+                 <a  href="{% url "password_change" %}" >
+                     <img src="/static/images/unlock.png" alt="" class="circle responsive-img"> </a>
+           </div>
+          <div class="col s3" >
+          </br> </br>
+pour changer votre mot de passe
+          <p><a  href="{% url "password_change" %}" class="btn" >clicker ici </a></p>
+          </div>
+      </div>
+</div>
+
+
+        <div class="card-panel col s6 pink darken-1 white-text">
+             <div class="row">
+           <div class="col s2">
+                 <a  href="{% url "password_change" %}" >
+                     <img src="/static/images/user.png" alt="" class="circle responsive-img"> </a>
+           </div>
+          <div class="col s3" >
+<br><br>pour changer les info personnels
+              <p><a a href="{% url "edit" %}" class="btn" >clicker ici </a></p> </div></div>
+
+    </div>
+
+    <div class="row">
+      <div class="col s12 pink darken-1 white-text center"> pages  </div>
+
+ <br><br>
+
+      <div class="col s3">  <div class="row">
+    <div class="col s3 m7">
+      <div class="card">
+        <div class="card-image">
+
+<a href="{% url "GestionMat:materials_list" %}">   <img src="/static/images/briefing.png"></a>
+        </div>
+        <div class="card-content">
+          <p>Liste des Materials</p>
+        </div>
+        <div class="card-action">
+           <a href="{% url "GestionMat:materials_list" %}">clicker ici</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+
+
+
+       <div class="col s3"> <div class="row">
+    <div class="col s12 m7">
+      <div class="card pink darken-1 white-text">
+        <div class="card-image">
+
+<a href="{% url "GestionMat:materials_list" %}">  <img src="/static/images/research.png"></a>
+        </div>
+        <div class="card-content">
+          <p>rechercher</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url "GestionMat:mat_search" %}">clicker ici</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+
+
+
+
+ <div class="col s3"> <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+              <a href="{% url "GestionMat:garrenti_search" %}"> <img src="/static/images/computer.png"></a>
+
+
+        </div>
+        <div class="card-content">
+          <p>CHERCHER LES VIDEOPROJECTEURS QUI NE SONT PLUS SOUS GARENTIE</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url "GestionMat:garrenti_search" %}">clicker ici</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+
+
+
+        <div class="col s3"> <div class="row">
+    <div class="col s12 m7">
+      <div class="card pink darken-1 white-text">
+        <div class="card-image">
+               <a href="{% url "enregistrer" %}"> <img src="/static/images/detective.png"></a>
+
+
+        </div>
+        <div class="card-content">
+          <p> creer un nouveau utilisateur</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url "enregistrer" %}">clicker ici</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+
+
+
+
+
+
+
+
+
+    </div>
+{% else %}
+    <p>Bonjour il faut identifier d'abord</p>
+{% endif %}
+{% endblock %}

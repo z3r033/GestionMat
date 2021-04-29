@@ -1,0 +1,15 @@
+{% extends "./base.html" %}
+
+
+{% block title %}supprimer le material{% endblock %}
+{% block content %}
+ <h1>Ajouter un material</h1>
+ <p>Ajouter un nouveau material</p>
+ <form method="post">
+vous voulez supprimer cette object {{ martia.numero_serie }}
+ {% csrf_token %}
+ <p><input type="submit" value="supprimer le material"></p>
+ <a href="../">cancel</a>
+ </form>
+
+{% endblock %}
