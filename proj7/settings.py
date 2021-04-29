@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'gestionmat',
         'USER': 'hayat',
         'PASSWORD': 'hayatpass',
-        'HOST': '127.0.0.1',
+        'HOST': '105.156.72.216',
         'PORT': '3306',
     }
 }
